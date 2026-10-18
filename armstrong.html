@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eff6ff;
+            text-align: center;
+            padding: 50px;
+        }
+        .box {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background: #1d4ed8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Armstrong Number</h1>
+        <p>Check whether a number is an Armstrong number.</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+        <br>
+        <button onclick="checkArmstrong()">Check Number</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkArmstrong() {
+            let input = document.getElementById("num").value;
+            let n = Number(input);
+            let result = document.getElementById("result");
+
+            if (input.trim() === "" || !Number.isSafeInteger(n) || n < 0) {
+                result.textContent = "Enter a non-negative whole number.";
+                return;
+            }
+
+            let digits = String(n);
+            let power = digits.length;
+            let sum = 0;
+
+            for (let i = 0; i < digits.length; i++) {
+                sum += Number(digits[i]) ** power;
+            }
+
+            result.textContent = (sum === n)
+                ? n + " is an Armstrong Number"
+                : n + " is not an Armstrong Number";
+        }
+    </script>
+</body>
+</html>
+

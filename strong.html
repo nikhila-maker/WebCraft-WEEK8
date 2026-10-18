@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strong Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+            text-align: center;
+            padding: 50px;
+        }
+        .box {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background: #6d28d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Strong Number</h1>
+        <p>Check whether a number is a Strong number.</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+        <br>
+        <button onclick="checkStrong()">Check Number</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkStrong() {
+            let input = document.getElementById("num").value;
+            let n = Number(input);
+            let result = document.getElementById("result");
+
+            if (input.trim() === "" || !Number.isSafeInteger(n) || n < 0) {
+                result.textContent = "Enter a non-negative whole number.";
+                return;
+            }
+
+            let digits = String(n);
+            let sum = 0;
+
+            for (let i = 0; i < digits.length; i++) {
+                let digit = Number(digits[i]);
+                let fact = 1;
+
+                for (let j = 1; j <= digit; j++) {
+                    fact *= j;
+                }
+
+                sum += fact;
+            }
+
+            result.textContent = (sum === n)
+                ? n + " is a Strong Number"
+                : n + " is not a Strong Number";
+        }
+    </script>
+</body>
+</html>
+

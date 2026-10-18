@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fdf2f8;
+            text-align: center;
+            padding: 50px;
+        }
+        .box {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background: #be185d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Factorial Number</h1>
+        <p>Calculate the factorial of a number.</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+        <br>
+        <button onclick="calculateFactorial()">Calculate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateFactorial() {
+            let input = document.getElementById("num").value;
+            let n = Number(input);
+            let fact = 1;
+            let result = document.getElementById("result");
+
+            if (input.trim() === "" || !Number.isInteger(n) || n < 0 || n > 170) {
+                result.textContent = "Enter a whole number between 0 and 170.";
+                return;
+            }
+
+            for (let i = 1; i <= n; i++) {
+                fact *= i;
+            }
+
+            result.textContent = "Factorial of " + n + " is " + fact;
+        }
+    </script>
+</body>
+</html>
+

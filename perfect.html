@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff7ed;
+            text-align: center;
+            padding: 50px;
+        }
+        .box {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background: #ea580c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Perfect Number</h1>
+        <p>Check whether a number is perfect.</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+        <br>
+        <button onclick="checkPerfect()">Check Number</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkPerfect() {
+            let input = document.getElementById("num").value;
+            let n = Number(input);
+            let sum = 0;
+            let result = document.getElementById("result");
+
+            if (input.trim() === "" || !Number.isSafeInteger(n)) {
+                result.textContent = "Please enter a whole number.";
+                return;
+            }
+
+            for (let i = 1; i < n; i++) {
+                if (n % i === 0) {
+                    sum += i;
+                }
+            }
+
+            result.textContent = (n > 0 && sum === n)
+                ? n + " is a Perfect Number"
+                : n + " is not a Perfect Number";
+        }
+    </script>
+</body>
+</html>
+

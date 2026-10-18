@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf2ff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background-color: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px gray;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            color: green;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Fibonacci Series</h1>
+
+        <p>Enter the number of terms:</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+
+        <br>
+
+        <button onclick="fibonacci()">Generate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function fibonacci() {
+            let n = Number(document.getElementById("num").value);
+            let a = 0;
+            let b = 1;
+            let series = "";
+
+            if (
+                document.getElementById("num").value.trim() === "" ||
+                !Number.isInteger(n) ||
+                n < 1 ||
+                n > 100
+            ) {
+                document.getElementById("result").innerHTML =
+                    "Please enter a number between 1 and 100.";
+                return;
+            }
+
+            for (let i = 1; i <= n; i++) {
+                series += a + " ";
+
+                let c = a + b;
+                a = b;
+                b = c;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Fibonacci Series: " + series;
+        }
+    </script>
+
+</body>
+</html>
+
