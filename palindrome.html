@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Number</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf2ff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background-color: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px gray;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Palindrome Number</h1>
+
+        <p>Enter a number:</p>
+
+        <input type="number" id="num" placeholder="Enter a number">
+
+        <br>
+
+        <button onclick="checkPalindrome()">Check</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            let n = document.getElementById("num").value.trim();
+
+            if (n === "" || !Number.isSafeInteger(Number(n)) || Number(n) < 0) {
+                document.getElementById("result").innerHTML =
+                    "Please enter a non-negative whole number.";
+                return;
+            }
+
+            let reverse = n.split("").reverse().join("");
+
+            if (n === reverse) {
+                document.getElementById("result").innerHTML =
+                    n + " is a Palindrome Number";
+            } else {
+                document.getElementById("result").innerHTML =
+                    n + " is not a Palindrome Number";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
